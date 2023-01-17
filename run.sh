@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dart $1
+dart --enable-asserts $1
