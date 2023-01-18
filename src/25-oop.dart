@@ -6,10 +6,19 @@ void main() {
 }
 
 class Phone {
+  static int _idCounter = 0;
+
+  int _id = 0;
   String _name = "";
   double _screen = 0.0;
 
-  Phone(this._name, this._screen) {}
+  Phone(this._name, this._screen) {
+    this._id = Phone._idCounter++;
+  }
+
+  int get id {
+    return this._id;
+  }
 
   String get name {
     return _name;
@@ -28,6 +37,6 @@ class Phone {
   }
 
   String toString() {
-    return "${this._name}, ${this._screen}";
+    return "#$id, ${this._name}, ${this._screen}";
   }
 }
