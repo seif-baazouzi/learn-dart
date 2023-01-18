@@ -1,16 +1,30 @@
 void main() {
-  var phone = new Phone("phone", 5.6);
-  phone.name = "new phone name";
+  var s20 = new Samsung("s20", 5.6);
+  var i10 = new Samsung("iphone 10", 4.8);
 
-  print(phone);
+  print(s20);
+  print(i10);
 }
 
-class Phone {
+class Samsung extends Phone {
+  Samsung(String name, double screen) : super(name, screen) {
+    this._brand = "samsung";
+  }
+}
+
+class Iphone extends Phone {
+  Iphone(String name, double screen) : super(name, screen) {
+    this._brand = "Iphone";
+  }
+}
+
+abstract class Phone {
   static int _idCounter = 0;
 
   int _id = 0;
   String _name = "";
   double _screen = 0.0;
+  String _brand = "";
 
   Phone(this._name, this._screen) {
     this._id = Phone._idCounter++;
@@ -26,6 +40,10 @@ class Phone {
 
   double get screen {
     return this._screen;
+  }
+
+  String get brand {
+    return _brand;
   }
 
   void set name(String newName) {
